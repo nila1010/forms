@@ -84,22 +84,8 @@ export async function patchRecipies(id, value) {
     headers: headersList,
   });
 
-  $("form").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    let value = {};
-    const formData = new FormData($("form"));
-    value.name = formData.get("name");
-    value.description = formData.get("description");
-    value.ingredients = formData.get("ingredients").split("\n");
-    value.serves = formData.get("serves");
-    value.allergens = formData.get("allerges").split("\n");
-    value.diet = formData.get("diet");
-    value.studentFriendly = formData.get("studentFriendly");
-    value.origin = formData.get("origin");
-    await creatRecipes(value);
-    showRecipes();
-    await $("form").reset();
-  });
+  $("#btn-send").hidden = false;
+  $("#btn-update").hidden = true;
 
   return data;
 }

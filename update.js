@@ -4,7 +4,9 @@ import { $, $$ } from "./moduels/dom.js";
 import { apikey, endpoint } from "./moduels/settings.js";
 
 async function editRecipe(data, id) {
-  $("button").textContent = "Updater";
+  $("#btn-send").hidden = true;
+  $("#btn-update").hidden = false;
+
   $("#form_name").focus();
   data.forEach((e) => {
     $("#form_name").value = e.name;
@@ -17,7 +19,7 @@ async function editRecipe(data, id) {
     e.studentFriendly ? ($("#form_studentFriendly_yes").checked = true) : ($("#form_studentFriendly_no").checked = true);
   });
 
-  $("button").addEventListener("click", async (e) => {
+  $("#btn-update").addEventListener("click", async (e) => {
     e.preventDefault();
     $("button").textContent = "Indsend opskrift";
     let value = {};

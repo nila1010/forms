@@ -2,6 +2,8 @@ import { getRecipes, removeRecipes, creatRecipes } from "./moduels/crud.js";
 import { $, $$ } from "./moduels/dom.js";
 import { updateRecipe } from "./update.js";
 
+$("#btn-update").hidden = true;
+
 $("form").addEventListener("submit", async (e) => {
   e.preventDefault();
   let value = {};
