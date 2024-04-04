@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  <link rel="stylesheet" href="reset.css"> -->
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="script.js"></script>
+    <title>Forms</title>
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <form action="">
+            <fieldset>
+                <legend>Personal information</legend>
+                <label for="name">
+                    Full name
+                    <input type="text" name="name" id="name">
+                </label>
+                <label for="age">
+                    Age
+                    <input type="number" name="age" id="age">
+                </label>
+                <label for="contry">
+                    Contry
+                    <select name="contry" id="contry">
+                        <option value="">Land</option>
+                        <option value="">Land</option>
+                        <option value="">Land</option>
+                    </select>
+                </label>
+                <label for="city">
+                    City
+                    <input type="text" name="city" id="city">
+                </label>
+                <label for="profile">
+                    Upload profile picture
+                    <input type="file" name="profile" id="profile">
+                </label>
+                <label for="family">
+                    Number of family members
+                    <input type="number" name="family" id="family">
+                </label>
+            </fieldset>
+            <fieldset>
+                <legend>Profession</legend>
+                <label for="hectares">
+                    Farm size in hacteres
+                    <input type="number" name="hectares" id="hectares">
+                </label>
+                <label for="crops">
+                    Crops
+                    <textarea name="crops" id="crops" cols="10" rows="10"></textarea>
+                    <p>Write one crop pr. line</p>
+                </label>
+            </fieldset>
+        </form>
+    </main>
+    <footer></footer>
+</body>
+
+</html>

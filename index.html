@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="stylelayers.css">
+    <script type="module" src="script.js"></script>
+    <title>Forms</title>
+</head>
+
+<body>
+    <header></header>
+    <main>
+
+        <form action="" aria-label="Formular for indsendelse af opskrifter">
+            <h1>Her kan du indsende din opskrift</h1>
+            <label for="form_name">
+                <h2>Rettens navn:</h2>
+                <input type="text" name="name" id="form_name" inputmode="text" placeholder=" " required>
+                <p class="error">Error</p>
+            </label>
+            <label for="form_description">
+                <h2>Beskrivelse:</h2>
+                <textarea name="description" id="form_description" cols="auto" rows="5" inputmode="text" placeholder=" "
+                    required></textarea>
+                <p class="error">Error</p>
+            </label>
+            <label for="form_ingredients">
+                <h2 aria-describedby="ingredienser_info">Ingredienser:</h2>
+                <textarea name="ingredients" id="form_ingredients" cols="auto" rows="5" inputmode="text" placeholder=" "
+                    required></textarea>
+                <p id="ingredienser_info">(Skriv en pr linje)</p>
+                <p class="error">Error</p>
+            </label>
+            <label for="form_serves">
+                <h2>Hvor mange er det til?</h2>
+                <input type="text" name="serves" id="form_serves" pattern="\d+" inputmode=" numeric" placeholder=" "
+                    required>
+                <p class="error">Error</p>
+            </label>
+
+            <label for="form_allerges">
+                <h2 aria-describedby="allerges_info">Allergier?:</h2>
+                <textarea name="allerges" id="form_allerges" cols="auto" rows="5" inputmode="text" placeholder=" "
+                    required></textarea>
+                <p id="ingredienser_info">(Skriv en pr linje)</p>
+                <p class="error">Error</p>
+            </label>
+
+
+            <fieldset>
+                <legend>
+                    <h2>Specielle dieter?</h2>
+                </legend>
+                <div>
+                    <label for="meat">
+                        <input type="radio" name="diet" id="meat" value="Omid" placeholder=" " required>
+                        Omid
+                    </label>
+                    <label for="vegtarian">
+                        <input type="radio" name="diet" id="vegtarian" value="Vegetarisk" placeholder=" " required>
+                        Vegetar
+                    </label>
+                    <label for="vegan">
+                        <input type="radio" name="diet" id="vegan" value="Vegansk" placeholder=" " required>
+                        Vegansk
+                    </label>
+                </div>
+                <p class="error">Error</p>
+            </fieldset>
+
+
+            <fieldset>
+                <legend>
+                    <h2>Studender venlig?</h2>
+                </legend>
+                <div>
+                    <label for="form_studentFriendly_yes">
+                        <input type="radio" name="studentFriendly" id="form_studentFriendly_yes" placeholder=" "
+                            value="yes" required>
+                        Ja
+                    </label>
+                    <label for="form_studentFriendly_no">
+                        <input type="radio" name="studentFriendly" id="form_studentFriendly_no" placeholder=" "
+                            value="no" required>
+                        Nej
+                    </label>
+                </div>
+                <p class="error">Error</p>
+            </fieldset>
+
+            <label for="form_origin">
+                <h2>Hvor er rette oprindelig fra?</h2>
+                <select name="origin" id="form_origin" placeholder=" " required>
+                    <option value="" placeholder=" ">Vælg et land</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+                <p class="error">Error</p>
+            </label>
+
+            <button type="submit">Indsend opskrift</button>
+        </form>
+        <section>
+        </section>
+        <template>
+            <article>
+                <div class="flow-space">
+                    <h2 data-name>Her er rettens navn</h2>
+                    <p data-description>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi labore
+                        dolore nihil totam ullam fugiat dolorem magnam a doloribus autem omnis officia iste ea,
+                        repellendus culpa corporis, optio officiis excepturi?
+                        Repellendus repudiandae dignissimos </p>
+                    <p>Rette er fra: <span data-origin></span></p>
+                    <p>Retten er: <span data-diet></span></p>
+                    <p>Retten er til <span data-serves></span> personer</p>
+                    <p data-studenFriendly>Studen Friendly</p>
+                </div>
+                <div>
+                    <h3>Ingredienser:</h3>
+                    <ul data-ingridiens>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Allergier:</h3>
+                    <ul data-allerges>
+
+                    </ul>
+                </div>
+                <div class="btns">
+                    <button data-id="" data-action="delete" type="button">Slet</button>
+                    <button data-id="" data-action="update" type="button">Rediger</button>
+                </div>
+            </article>
+        </template>
+
+    </main>
+    <footer></footer>
+</body>
+
+</html>

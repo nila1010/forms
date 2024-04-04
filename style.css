@@ -1,0 +1,295 @@
+:root {
+  --primary-color: #f5f6f6;
+  --secondary-color: #6dc3b7;
+  --primary-color-form: #ffffff;
+  --secondary-color-form: #ff0000;
+  --valid-color: #6dc3b883;
+  --invalid-color: #ff00003d;
+  --valid-icon: url(valid.svg);
+  --invalid-icon: url(invalid.svg);
+  --btn-secondary: #4b9087;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+img {
+  object-fit: cover;
+  align-self: stretch;
+}
+
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.2rem;
+  display: flex;
+  gap: 1cqi;
+  align-items: center;
+}
+
+h2::after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  background-image: var(--icon);
+}
+
+p {
+  font-size: 0.8rem;
+}
+
+legend {
+  inline-size: 100%;
+}
+
+form {
+  background: var(--primary-color);
+  padding: 2rem;
+  display: grid;
+  grid: auto/ 1fr;
+  justify-content: center;
+  gap: 2rem;
+  inline-size: max(20rem, 100%);
+}
+label {
+  display: grid;
+}
+
+fieldset:has([type="checkbox"], [type="radio"]) {
+  label {
+    gap: 8px;
+  }
+  h2 {
+    margin-block-end: 3px;
+  }
+}
+
+input,
+textarea,
+select {
+  background: var(--primary-color-form);
+  border: 1px solid rgb(134, 134, 134);
+  border-radius: 0.2rem;
+}
+
+div {
+  display: grid;
+  gap: 0.5rem;
+
+  & > div {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+/*---------COMPONENTS----------*/
+
+input[type="text"] {
+  block-size: 30px;
+}
+
+[for="form_serves"] {
+  inline-size: fit-content;
+}
+[for="form_name"] {
+  inline-size: 50%;
+}
+[for="form_ingredients"] {
+  inline-size: 50%;
+}
+
+@supports (field-sizing: content) {
+  textarea {
+    field-sizing: content;
+    min-block-size: 100px;
+  }
+}
+
+label:has(input[type="radio"], input[type="checkbox"]) {
+  display: grid;
+  grid: auto/ auto-flow 0.3fr;
+  inline-size: fit-content;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  display: grid;
+  place-content: center;
+  appearance: none;
+  background: var(--primary-color-form);
+  margin: 0;
+  font: inherit;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid black;
+}
+
+input[type="radio"] {
+  border-radius: calc(infinity * 1px);
+}
+
+input[type="radio"]::before {
+  content: "";
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: calc(infinity * 1px);
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1rem 1rem var(--secondary-color);
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.5em;
+  height: 0.5em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1rem 1rem var(--secondary-color);
+  transform-origin: bottom left;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+label[for="form_origin"] {
+  place-self: start;
+}
+
+button {
+  background: var(--secondary-color);
+  color: var(--primary-color);
+  border-radius: 0.2rem;
+  inline-size: 50%;
+  block-size: 3rem;
+
+  transition: all 0.3s ease-out;
+
+  &:hover,
+  &:focus {
+    background: var(--btn-secondary);
+  }
+}
+
+.error {
+  display: none;
+  color: var(--secondary-color-form);
+}
+
+/*---------STATES----------*/
+
+label:has(:user-valid):not(:focus, :placeholder-shown) {
+  input,
+  textarea,
+  select {
+    outline: 1px solid var(--secondary-color);
+    background: var(--valid-color);
+  }
+  /*   fieldset:has(> div > &) {
+    h2::after {
+      --icon: var(--valid-icon);
+    }
+  } */
+
+  input[type="checkbox"] {
+    background: none;
+  }
+  h2::after {
+    --icon: var(--valid-icon);
+  }
+}
+
+label:has(:user-invalid):not(:focus, :placeholder-shown),
+fieldset:has(:user-invalid):not(:focus, :placeholder-shown) {
+  input,
+  textarea,
+  select {
+    outline: 1px solid rgba(255, 0, 0, 0.282);
+    background: var(--invalid-color);
+    animation: shake 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+  }
+  h2::after {
+    --icon: var(--invalid-icon);
+  }
+
+  .error {
+    display: block;
+  }
+}
+
+fieldset:has(:checked:not(:focus)) {
+  h2::after {
+    --icon: var(--valid-icon);
+  }
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 1px solid var(--secondary-color);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+@media (width < 700px) {
+  main {
+    grid-template-columns: 1fr;
+    grid-template-rows: 300px auto;
+
+    img {
+      order: -1;
+    }
+  }
+}
+
+/*------------ANIMATION-----------*/
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70% {
+    transform: translateX(-4px);
+  }
+  20%,
+  40%,
+  60% {
+    transform: translateX(4px);
+  }
+  80% {
+    transform: translateX(2px);
+  }
+  90% {
+    transform: translateX(-2px);
+  }
+}
+
+/* invalid:not(:focus, :placeholder-shown)
+
+vailid:not(:focus)
+
+placeholder opacity 0 eller sæt et mellemrum i html  
+
++ eller ~(så vælger den bare et efterfølgende) error for at få vist fejl hvis du sætter det på øverste linje her 
+
+user-invalid og user-valid - går ind og erstatter ovenstående men er meget nyt
+
+@supports selector(:has(+*)  spørg om browser undersøttter dette gør dette eller sæt @support not hvis du vil lave regle hvis browser ikke undersøtter
+
+brug after til at sætte et svg element ind 
+
+@layer reset, components, states
+
+@components{}
+@states{}
+*/

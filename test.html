@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  <link rel="stylesheet" href="reset.css"> -->
+    <link rel="stylesheet" href="stylelayers.css">
+    <script type="module" src="script.js"></script>
+    <title>Forms</title>
+</head>
+
+<body>
+    <header></header>
+    <main>
+
+        <form action="" aria-label="Formular for indsendelse af opskrifter">
+            <h1>Her kan du indsende din opskrift</h1>
+            <label for="form_name">
+                <h2>Rettens navn:</h2>
+                <input type="text" name="name" id="form_name" inputmode="text" placeholder=" " required>
+                <p class="error">Error</p>
+            </label>
+            <label for="form_description">
+                <h2>Beskrivelse:</h2>
+                <textarea name="description" id="form_description" cols="auto" rows="5" inputmode="text" placeholder=" "
+                    required></textarea>
+                <p class="error">Error</p>
+            </label>
+            <label for="form_ingredients">
+                <h2 aria-describedby="ingredienser_info">Ingredienser:</h2>
+                <textarea name="ingredients" id="form_ingredients" cols="auto" rows="5" inputmode="text" placeholder=" "
+                    required></textarea>
+                <p id="ingredienser_info">(Skriv en pr linje)</p>
+                <p class="error">Error</p>
+            </label>
+            <label for="form_serves">
+                <h2>Hvor mange er det til?</h2>
+                <input type="text" name="serves" id="form_serves" pattern="\d+" inputmode=" numeric" placeholder=" "
+                    required>
+                <p class="error">Error</p>
+            </label>
+            <div>
+                <fieldset>
+                    <legend>
+                        <h2>Allergier?</h2>
+                    </legend>
+                    <div>
+                        <label for="nuts">
+                            <input type="checkbox" name="allerges" id="nuts" value="nuts" placeholder=" " required>
+                            Nødder
+                        </label>
+                        <label for="laktose">
+                            <input type="checkbox" name="allerges" id="laktose" value="laktose" placeholder=" "
+                                required>
+                            Laktose
+                        </label>
+                        <label for="egg">
+                            <input type="checkbox" name="allerges" id="egg" value="egg" placeholder=" " required>
+                            Æg
+                        </label>
+                        <label for="citrus">
+                            <input type="checkbox" name="allerges" id="citrus" value="citrus" placeholder=" " required>
+                            Citrusfrugter
+                        </label>
+                    </div>
+                    <p class="error">Error</p>
+                </fieldset>
+            </div>
+            <div>
+                <fieldset>
+                    <legend>
+                        <h2>Specielle dieter?</h2>
+                    </legend>
+                    <div>
+                        <label for="meat">
+                            <input type="radio" name="diet" id="meat" value="meat" placeholder=" " required>
+                            Kød
+                        </label>
+                        <label for="vegtarian">
+                            <input type="radio" name="diet" id="vegtarian" value="vegetarian" placeholder=" " required>
+                            Vegetar
+                        </label>
+                        <label for="vegan">
+                            <input type="radio" name="diet" id="vegan" value="vegan" placeholder=" " required>
+                            Vegansk
+                        </label>
+                    </div>
+                    <p class="error">Error</p>
+                </fieldset>
+            </div>
+            <div>
+                <fieldset>
+                    <legend>
+                        <h2>Studender venlig?</h2>
+                    </legend>
+                    <div>
+                        <label for="form_studentFriendly_yes">
+                            <input type="radio" name="studentFriendly" id="form_studentFriendly_yes" placeholder=" "
+                                value="yes" required>
+                            Ja
+                        </label>
+                        <label for="form_studentFriendly_no">
+                            <input type="radio" name="studentFriendly" id="form_studentFriendly_no" placeholder=" "
+                                value="no" required>
+                            Nej
+                        </label>
+                    </div>
+                    <p class="error">Error</p>
+                </fieldset>
+            </div>
+            <label for="form_origin">
+                <h2>Hvor er rette oprindelig fra?</h2>
+                <select name="origin" id="form_origin" placeholder=" " required>
+                    <option value="" placeholder=" ">Vælg et land</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+                <p class="error">Error</p>
+            </label>
+
+            <button type="button">Indsend opskrift</button>
+        </form>
+        <img src="https://images.unsplash.com/photo-1506368249639-73a05d6f6488?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cmVjaXBlfGVufDB8fDB8fHww"
+            alt="billede af skeer med kryderier">
+    </main>
+    <footer></footer>
+</body>
+
+</html>

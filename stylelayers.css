@@ -1,0 +1,310 @@
+@layer reset, global, components, states;
+@import url(reset.css) layer(reset);
+
+@layer global {
+  :root {
+    --primary-color: #f5f6f6;
+    --secondary-color: #6dc3b7;
+    --primary-color-form: #ffffff;
+    --vaild-color: #6dc3b747;
+    --invalid-color: #ff00003d;
+    --valid-icon: url(valid.svg);
+    --invalid-icon: url(invalid.svg);
+
+    --step--1: clamp(0.8rem, 0.7847rem + 0.0765cqi, 0.844rem);
+    --step-0: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
+    --step-1: clamp(1.25rem, 1.1632rem + 0.4341cqi, 1.4996rem);
+    --step-2: clamp(1.5625rem, 1.4107rem + 0.7591cqi, 1.999rem);
+    --step-3: clamp(1.9531rem, 1.7056rem + 1.2375cqi, 2.6647rem);
+    --step-4: clamp(2.4414rem, 2.0551rem + 1.9315cqi, 3.552rem);
+    --step-5: clamp(3.0518rem, 2.4663rem + 2.9271cqi, 4.7348rem);
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 0.8rem;
+  }
+
+  legend {
+    inline-size: 100%;
+  }
+
+  form {
+    background: var(--primary-color);
+    padding: 2rem;
+    display: grid;
+    grid: auto/ 1fr;
+    place-content: start;
+    gap: 2rem;
+    inline-size: max(20rem, 100%);
+  }
+  label {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  input,
+  textarea {
+    background: var(--primary-color-form);
+    border: 1px solid rgb(134, 134, 134);
+    border-radius: 0.2rem;
+  }
+
+  .flow-space {
+    > * + * {
+      margin-block-start: var(--flow-space, 0.5rlh);
+    }
+  }
+}
+
+@layer components {
+  @supports (field-sizing: content) {
+    textarea {
+      field-sizing: content;
+      min-block-size: 100px;
+    }
+  }
+
+  h2 {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  h2::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    background-image: var(--icon);
+  }
+
+  input[type="text"] {
+    block-size: 30px;
+  }
+
+  [for="form_serves"] {
+    inline-size: fit-content;
+  }
+  [for="form_name"] {
+    inline-size: 50%;
+  }
+  [for="form_ingredients"],
+  [for="form_allerges"] {
+    inline-size: 50%;
+  }
+
+  input[type="text"],
+  input[type="number"] {
+    block-size: 30px;
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    appearance: none;
+  }
+
+  label:has(input[type="radio"]) {
+    display: grid;
+    grid: auto/ auto-flow 0.3fr;
+    inline-size: fit-content;
+  }
+
+  input[type="radio"] {
+    display: grid;
+    place-content: center;
+    appearance: none;
+    background: var(--primary-color-form);
+    margin: 0;
+    font: inherit;
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid black;
+    border-radius: calc(infinity * 1px);
+  }
+
+  input[type="radio"]::before {
+    content: "";
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: calc(infinity * 1px);
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1rem 1rem var(--secondary-color);
+  }
+
+  input[type="radio"]:checked::before {
+    transform: scale(1);
+  }
+
+  label[for="form_origin"] {
+    place-self: start;
+  }
+
+  fieldset {
+    div {
+      margin-block-start: 0.3rlh;
+      display: grid;
+      gap: 0.5rem;
+    }
+  }
+
+  button {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    border-radius: 0.2rem;
+    inline-size: 50%;
+    block-size: 3rem;
+    transition: all 0.3s ease-out;
+
+    &:hover {
+      background: #4b9087;
+    }
+  }
+
+  .error {
+    display: none;
+    color: var(--invalid-color);
+  }
+
+  /**********CARD*******************/
+
+  section {
+    display: grid;
+    gap: 1rem;
+    block-size: fit-content;
+  }
+
+  article {
+    background: #a6bfb1;
+    padding: 2rem;
+    display: grid;
+    gap: 1rem;
+    align-self: start;
+    ul {
+      margin: 0;
+    }
+
+    h2 {
+      font-size: var(--step-3);
+    }
+
+    h3 {
+      font-size: var(--step-1);
+    }
+
+    p:first-of-type {
+      font-size: var(--step-0);
+    }
+
+    p:nth-of-type(n + 3) {
+      --flow-space: 0.1rlh;
+    }
+
+    p:last-of-type {
+      --flow-space: 0.5rlh;
+    }
+
+    .btns {
+      display: flex;
+      gap: 1rem;
+    }
+
+    [data-studenFriendly] {
+      background: #344c30;
+      color: white;
+      inline-size: fit-content;
+      padding: 0.5rem;
+      border-radius: 10px;
+    }
+  }
+}
+
+@layer states {
+  label:has(:user-valid):not(:focus, :placeholder-shown) {
+    input,
+    textarea,
+    select {
+      outline: 1px solid var(--secondary-color);
+      background: var(--vaild-color);
+    }
+    /*   fieldset:has(> div > &) {
+    h2::after {
+      --icon: var(--valid-icon);
+    }
+  } */
+
+    input[type="checkbox"] {
+      background: none;
+    }
+    h2::after {
+      --icon: var(--valid-icon);
+    }
+  }
+
+  label:has(:user-invalid):not(:focus, :placeholder-shown),
+  fieldset:has(:user-invalid):not(:focus, :placeholder-shown) {
+    input,
+    textarea,
+    select {
+      outline: 1px solid rgba(255, 0, 0, 0.282);
+      background: var(--invalid-color);
+      animation: shake 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+    }
+    h2::after {
+      --icon: var(--invalid-icon);
+    }
+
+    .error {
+      display: block;
+    }
+  }
+
+  fieldset:has(:checked:not(:focus)) {
+    h2::after {
+      --icon: var(--valid-icon);
+    }
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: 1px solid var(--secondary-color);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+}
+
+@media (width < 700px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* invalid:not(:focus, :placeholder-shown)
+
+vailid:not(:focus)
+
+placeholder opacity 0 eller sæt et mellemrum i html  
+
++ eller ~(så vælger den bare et efterfølgende) error for at få vist fejl hvis du sætter det på øverste linje her 
+
+user-invalid og user-valid - går ind og erstatter ovenstående men er meget nyt
+
+@supports selector(:has(+*)  spørg om browser undersøttter dette gør dette eller sæt @support not hvis du vil lave regle hvis browser ikke undersøtter
+
+brug after til at sætte et svg element ind 
+
+@layer reset, components, states
+
+@components{}
+@states{}
+*/
