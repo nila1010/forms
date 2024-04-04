@@ -1,4 +1,4 @@
-import { getRecipes, removeRecipes, patchRecipies, creatRecipes } from "./moduels/crud.js";
+import { getRecipes, removeRecipes, creatRecipes } from "./moduels/crud.js";
 import { $, $$ } from "./moduels/dom.js";
 import { updateRecipe } from "./update.js";
 
@@ -60,7 +60,6 @@ export async function showRecipes() {
     });
     clone.querySelector("button[data-action='update']").addEventListener("click", async () => {
       await updateRecipe(recipe.id);
-      /*  await showRecipes(); */
     });
 
     parent.appendChild(clone);

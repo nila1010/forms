@@ -84,7 +84,7 @@ export async function patchRecipies(id, value) {
     headers: headersList,
   });
 
-  $("button").removeEventListener("click", async (e) => {
+  $("form").addEventListener("submit", async (e) => {
     e.preventDefault();
     let value = {};
     const formData = new FormData($("form"));
@@ -96,7 +96,7 @@ export async function patchRecipies(id, value) {
     value.diet = formData.get("diet");
     value.studentFriendly = formData.get("studentFriendly");
     value.origin = formData.get("origin");
-    await patchRecipies(id, value);
+    await creatRecipes(value);
     showRecipes();
     await $("form").reset();
   });
