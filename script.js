@@ -1,6 +1,7 @@
 import { getRecipes, removeRecipes, creatRecipes } from "./moduels/crud.js";
 import { $, $$ } from "./moduels/dom.js";
 import { updateRecipe } from "./update.js";
+import { countries } from "./moduels/countries.js";
 
 $("#btn-update").hidden = true;
 
@@ -67,4 +68,14 @@ export async function showRecipes() {
     parent.appendChild(clone);
   });
 }
+
+function setContries() {
+  countries.forEach((country) => {
+    const option = document.createElement("option");
+    option.value = country.name;
+    option.textContent = country.name;
+    $("#form_origin").appendChild(option);
+  });
+}
+setContries();
 showRecipes();
