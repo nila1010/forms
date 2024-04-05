@@ -19,26 +19,26 @@
             <label for="form_name">
                 <h2>Rettens navn:</h2>
                 <input type="text" name="name" id="form_name" inputmode="text" placeholder=" " required>
-                <p class="error">Error</p>
+                <p class="error">Du mangler at angive rettens navn</p>
             </label>
             <label for="form_description">
                 <h2>Beskrivelse:</h2>
                 <textarea name="description" id="form_description" cols="auto" rows="5" inputmode="text" placeholder=" "
                     required></textarea>
-                <p class="error">Error</p>
+                <p class="error">Du mangler at beskrive retten</p>
             </label>
             <label for="form_ingredients">
                 <h2 aria-describedby="ingredienser_info">Ingredienser:</h2>
                 <textarea name="ingredients" id="form_ingredients" cols="auto" rows="5" inputmode="text" placeholder=" "
                     required></textarea>
                 <p id="ingredienser_info">(Skriv en pr linje)</p>
-                <p class="error">Error</p>
+                <p class="error">Du mangler at angive ingridienser</p>
             </label>
             <label for="form_serves">
                 <h2>Hvor mange er det til?</h2>
                 <input type="text" name="serves" id="form_serves" pattern="\d+" inputmode=" numeric" placeholder=" "
                     required>
-                <p class="error">Error</p>
+                <p class="error">Du mangler at angive antal personer</p>
             </label>
 
             <label for="form_allerges">
@@ -46,7 +46,7 @@
                 <textarea name="allerges" id="form_allerges" cols="auto" rows="5" inputmode="text" placeholder=" "
                     required></textarea>
                 <p id="ingredienser_info">(Skriv en pr linje)</p>
-                <p class="error">Error</p>
+                <p class="error">Du mangler at angive allagier</p>
             </label>
 
 
@@ -68,13 +68,13 @@
                         Vegansk
                     </label>
                 </div>
-                <p class="error">Error</p>
+                <p class="error">Du mangler at angive om retten er omid,vegetarisk eller vegansk</p>
             </fieldset>
 
 
             <fieldset>
                 <legend>
-                    <h2>Studender venlig?</h2>
+                    <h2>Studerende venlig?</h2>
                 </legend>
                 <div>
                     <label for="form_studentFriendly_yes">
@@ -88,7 +88,7 @@
                         Nej
                     </label>
                 </div>
-                <p class="error">Error</p>
+                <p class="error">Du mangler at angive om retten er venlig for studerende </p>
             </fieldset>
 
             <label for="form_origin">
@@ -99,7 +99,7 @@
                     <option value="2">2</option>
                     <option value="3">3</option>
                 </select>
-                <p class="error">Error</p>
+                <p class="error">Du mangler at angive hvilket land retten er fra</p>
             </label>
 
             <button id="btn-send" type="submit">Indsend opskrift</button>
@@ -121,15 +121,17 @@
                     <p data-studenFriendly>Studen Friendly</p>
                 </div>
                 <div>
-                    <h3>Ingredienser:</h3>
-                    <ul data-ingridiens>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Allergier:</h3>
-                    <ul data-allerges>
+                    <div>
+                        <h3>Ingredienser</h3>
+                        <ul data-ingridiens>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Allergier</h3>
+                        <ul data-allerges>
 
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
                 <div class="btns">
                     <button data-id="" data-action="delete" type="button">Slet</button>
